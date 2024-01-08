@@ -2,7 +2,7 @@
 // @name         Quiz Response Userscript
 // @namespace    http://tampermonkey.net/
 // @version      1.0
-// @description  userscript that adds answers and some js functionality.
+// @description  userscript that adds answers creates dynamic html tags
 // @author       You
 // @match        https://academy.cs.cmu.edu/quiz/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=cmu.edu

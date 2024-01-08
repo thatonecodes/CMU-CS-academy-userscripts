@@ -1,6 +1,15 @@
-/*
-A JS script that intercepts the fetch prototype and overrides it to intercept POST requests.
-*/
+// ==UserScript==
+// @name         Fetch Intercept Userscript
+// @namespace    http://tampermonkey.net/
+// @version      1.0
+// @description  A JS script that intercepts the fetch prototype and overrides it to intercept POST requests
+// @author       You
+// @match        https://academy.cs.cmu.edu/*
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=cmu.edu
+// @grant        none
+// ==/UserScript==
+
+
 
 //add any desired link addresses to block to the list
 const blockingRequests = []
