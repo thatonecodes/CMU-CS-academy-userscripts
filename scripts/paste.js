@@ -2,7 +2,7 @@
 // @name         Paste Script
 // @namespace    http://tampermonkey.net/
 // @version      2023-12-06
-// @description  try to take over the world!
+// @description  script that adds paste button and fetch blocking in one
 // @author       You
 // @match        https://academy.cs.cmu.edu/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=cmu.edu
