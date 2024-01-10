@@ -10,7 +10,7 @@
 // ==/UserScript==
 
 
-//blocks google analytics on cs acadmey
+//blocks google analytics on cs academy
 window['ga-disable-UA-112596988-1'] = true;
 let canPaste = true;
 const buttonVisible = true;
@@ -28,11 +28,11 @@ let toasterContainerStore = null;
 function removePrototypes(){
     if (canPaste) {
         ClipboardEvent.prototype.preventDefault = function() {
-            console.log("null");
-            console.log("COPY ENABLED!");
+            console.debug("preventDefault set to null.");
+            console.debug("COPY ENABLED!");
         }
         ClipboardEvent.prototype.stopImmediatePropagation = function() {
-            console.log("null");
+            console.debug("stopImmediatePropogation set to null.");
         }
         const toasterContainer = document.querySelector(".toaster-container");
         toasterContainerStore = toasterContainer;
@@ -83,24 +83,38 @@ document.addEventListener("copy", () => {
 
 removePrototypes();
 
+//some default urls to block (only tracking requests blocked here - teacher/others can't see all ur activity)
 const blockingRequests = ["https://backend.academy.cs.cmu.edu/api/v0/track/", "https://backend.academy.cs.cmu.edu/api/v0/submission/access-tracker/", "https://api.rollbar.com/api/1/item/"]
 
 let elementButtonAdded = false;
 var originalFetch = window.fetch;
 window.fetch = function(url, options){
     if (url == "https://backend.academy.cs.cmu.edu/api/v0/submission/points/"){
-        const optionsBody = JSON.parse(options.body)
-        let submissionID = optionsBody.submission_id;
-        let fileVersion = optionsBody.file_version;
-
-        let jsonDefined = {
-            "submission_id": submissionID,
-            "points": 1,
-            "score": "PASS",
-            "file_version": fileVersion
+        try {
+            const optionsBody = JSON.parse(options.body)
+            let submissionID = optionsBody.submission_id;
+            let fileVersion = optionsBody.file_version;
+    
+            const userPromptPoints = prompt("Please input the points(integer only) you would like to pass with. (anything over the maximum points stated on hover of" +
+                " the elements on the main page is *NOT* recommended)");
+            const pointsAsNumber = parseInt(userPromptPoints);
+            if (!isNaN(pointsAsNumber)){ //check if prompt is a valid num
+                let jsonDefined = {
+                    "submission_id": submissionID,
+                    "points": pointsAsNumber, //TODO, add points detection depending on which exercise clicked(using a prompt for now only)
+                    "score": "PASS",
+                    "file_version": fileVersion
+                }
+                    
+                options.body = JSON.stringify(jsonDefined);
+                console.log(`Found submission url: ${url}, ${options.body}`);
+            }else{
+                throw new Error("Invalid points. Are you sure that's a number?")
+            }
+        } catch (error) {
+            console.error("Something went wrong when processing the fetch intercept.", error);
         }
-        options.body = JSON.stringify(jsonDefined);
-        console.log(`Found submission url: ${url}, ${options.body}`);
+
      }
     if (blockingRequests.some(blockedUrl => url.includes(blockedUrl))){
         console.log("Blocked Request in List:", url);

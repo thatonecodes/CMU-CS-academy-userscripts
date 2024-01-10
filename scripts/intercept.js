@@ -14,6 +14,7 @@
 //add any desired link addresses to block to the list
 const blockingRequests = []
 
+//to call the fetch, click on the check button in the exercise
 var originalFetch = window.fetch;
 window.fetch = function(url, options){
     if (url == "https://backend.academy.cs.cmu.edu/api/v0/submission/points/"){
@@ -21,6 +22,7 @@ window.fetch = function(url, options){
         let submissionID = optionsBody.submission_id;
         let fileVersion = optionsBody.file_version;
 
+        const exercisePoints = 1; //change as needed to exercise max limit
         /*
         @param {number} submissionID a 4 digit number that is created upon submission(is in link)
         @param {number} points - a 1 digit number that represents the amount of points scored upon submission 
@@ -30,7 +32,7 @@ window.fetch = function(url, options){
         */
         let jsonDefined = {
             "submission_id": submissionID,
-            "points": 1, 
+            "points": exercisePoints, 
             "score": "PASS",
             "file_version": fileVersion
         }
