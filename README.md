@@ -3,7 +3,7 @@ Hey there. I decided to make some useful userscripts and scripts avaliable on gi
 
 ## How to install/use these userscripts
 **OPTION 1: IF YOU HAVE ACCESS TO CHROME EXTENSIONS**
-1. Download/install a userscript extension of your choice.
+1. Download/install a userscript extension of your choice.  
 Example: Tampermonkey
 - Google Chrome: [Google Chrome Install Link](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en)
 - Opera: [Opera Install Link](https://addons.opera.com/en/extensions/details/tampermonkey-beta/)
