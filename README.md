@@ -1,4 +1,4 @@
-# CS Academy Scripts & Userscripts
+# CMU CS Academy Scripts & Userscripts
 Hey there. I decided to make some useful userscripts and scripts avaliable on github for ease of access and *educational purposes.*
 
 ## How to install/use these userscripts
