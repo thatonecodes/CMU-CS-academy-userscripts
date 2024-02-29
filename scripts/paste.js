@@ -84,7 +84,8 @@ document.addEventListener("copy", () => {
 removePrototypes();
 
 //some default urls to block (only tracking requests blocked here - teacher/others can't see all ur activity)
-const blockingRequests = ["https://backend.academy.cs.cmu.edu/api/v0/track/", "https://backend.academy.cs.cmu.edu/api/v0/submission/access-tracker/", "https://api.rollbar.com/api/1/item/"]
+//const blockingRequests = ["https://backend.academy.cs.cmu.edu/api/v0/track/", "https://backend.academy.cs.cmu.edu/api/v0/submission/access-tracker/", "https://api.rollbar.com/api/1/item/"]
+const blockingRequests = []
 
 let elementButtonAdded = false;
 var originalFetch = window.fetch;
